@@ -21,4 +21,13 @@ router.post("/signup",
             .isLength({min: 6})
     ],usersControllers.signUp);
 
+router.post("/login", 
+    [
+        check("email")
+            .isEmail(),
+        check("password")
+            .not()
+            .isEmpty()
+    ],usersControllers.login);
+
 module.exports = router;

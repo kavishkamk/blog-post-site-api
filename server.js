@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 
 const usersRouter = require("./routes/users-routes");
+const blogRouter = require("./routes/blogs-router");
 const HttpError = require("./models/http-error");
 
 const app = express();
@@ -23,6 +24,7 @@ app.use((req, res, next) => {
 
 app.use("/upload/images", express.static(path.join("upload", "images")));
 app.use("/api/users", usersRouter);
+app.use("/api/blogs", blogRouter);
 
 // handle unused routes
 app.use((req, res, next) => {
