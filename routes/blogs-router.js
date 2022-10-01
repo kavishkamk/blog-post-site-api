@@ -7,6 +7,8 @@ const authCheck = require("../middleware/check-auth");
 
 const router = express.Router();
 
+router.get("/", blogControllers.getBlogs);
+
 router.use(authCheck);
 
 router.post("/", 

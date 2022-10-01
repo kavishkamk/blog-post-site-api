@@ -51,4 +51,18 @@ const createBlog = async (req, res, next) => {
     res.status(201).json({place: createdBlog});
 };
 
+const getBlogs = async (req, res, next) => {
+
+    let blogs;
+
+    try {
+        blogs = await Blog.find({});
+    } catch (error) {
+        return next(new HttpError("Somthing wrong", 500));
+    }
+    
+    res.json({blogs: blogs.map(p => p.toObject({getters: true}))});
+};
+
 exports.createBlog = createBlog;
+exports.getBlogs = getBlogs;
